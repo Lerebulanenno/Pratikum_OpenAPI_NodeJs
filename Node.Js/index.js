@@ -65,3 +65,20 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
         res,json({message: "User updated sucessfully"});
     });
  });
+
+ //Endpoint untuk menghapus pengguna berdasarkan ID
+ app.delete('/users/:id', (req, res) => {
+    const {id} = req.params; // Menga,bil ID pengguna dari parameter URL
+    db.query('DELETE FROM user WHERE id id =?', [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            res,status(500),send('Internal Server Error');
+            return;
+        }
+        if (result.affectedRows === 0) {
+            res.status(404).send('User not found'); // Jika tidak ditemukan, kirim respons 404
+            return;
+        }
+        res.json({ message: 'User deleted successfully'});
+    });
+ });
