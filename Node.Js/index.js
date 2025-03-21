@@ -82,3 +82,6 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
         res.json({ message: 'User deleted successfully'});
     });
  });
+
+ //Menjalankan server pada port 3000
+ app.listen(3000, () => console.log ('Server berjalan di httpe://localhost:3000'));
