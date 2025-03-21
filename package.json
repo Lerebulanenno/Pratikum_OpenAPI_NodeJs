@@ -1,0 +1,11 @@
+{
+  "name": "my-api",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0",
+    "swagger-ui-express": "^5.0.1",
+    "yaml": "^2.7.0"
+  }
+}
