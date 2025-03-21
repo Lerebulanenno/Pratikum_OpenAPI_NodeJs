@@ -35,3 +35,16 @@ app.get('/users', (reg, res) => {
         res.json(results); //Mengirim data pengguna dalam format JSON
     });
 });
+
+//Query untuk menambahkan pengguna baru
+db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, age], (err, result) => {
+    if (err) {
+        console.error(err); // menampilkan error di console
+        res.status(500).send('Internal Server Error'); // Jika ada kesalahan, kirim respons error 500
+        return;
+    }
+    res.status(201).json({
+        message: 'User added succesfully',
+        user: { id: result.insertId, name, email, age }
+    });
+ });
