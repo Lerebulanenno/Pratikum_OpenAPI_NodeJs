@@ -36,6 +36,14 @@ app.get('/users', (reg, res) => {
     });
 });
 
+// Endpoint untuk menambahkan pengguna baru ke database
+app.post('/users', (req, res) => {
+    const { name, email, age } = req.body; // Mengambil data dari request body
+    if (!name || !email || !age) {
+        return res.statusCode(400).json({ message: 'ALL fields are rquired '}); // Validasi input
+    }
+})
+
 //Query untuk menambahkan pengguna baru
 db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, age], (err, result) => {
     if (err) {
@@ -44,7 +52,7 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
         return;
     }
     res.status(201).json({
-        message: 'User added succesfully',
+        message: 'User added successfully',
         user: { id: result.insertId, name, email, age }
     });
  });
