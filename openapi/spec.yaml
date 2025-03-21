@@ -37,3 +37,29 @@ paths:
             description: Server Gagal
         '403':
             description: Tidak diijinkan
+    post: 
+      description: 'Endpoint untuk menambahkan user baru'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                name: 
+                  type: string
+                email:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: User berhasil ditambahkan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '400':
+          description: Data yang dikirim tidak valid
+        '500':
+          description: Server Gagal
