@@ -14,3 +14,6 @@ const db = mysql.createConnection({
     password: "", // kata sandi database
     database: "user" // nama database yang digunakan
 });
+
+// inisialisasi aplikasi express
+const app = express();
