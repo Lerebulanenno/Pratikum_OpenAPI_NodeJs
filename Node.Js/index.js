@@ -20,3 +20,6 @@ const app = express();
 
 //Middleware untuk memungkinkan server membaca dan memproses data JSON dalam request body
 app.use(express.json());
+
+//Endpoint untuk menampilkan dokumentasi Swagger di '/docs'
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
