@@ -40,10 +40,8 @@ app.get('/users', (reg, res) => {
 app.post('/users', (req, res) => {
     const { name, email, age } = req.body; // Mengambil data dari request body
     if (!name || !email || !age) {
-        return res.statusCode(400).json({ message: 'ALL fields are rquired '}); // Validasi input
+        return res.statusCode(400).json({ message: 'All fields are rquired '}); // Validasi input
     }
-})
-
 //Query untuk menambahkan pengguna baru
 db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, age], (err, result) => {
     if (err) {
@@ -56,6 +54,7 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
         user: { id: result.insertId, name, email, age }
     });
  });
+});
 
  //Endpoint untuk mendapatkan pengguna berdasarkan ID
  app.get('/users/:id', (req, res) => {
@@ -92,4 +91,4 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
  });
 
  //Menjalankan server pada port 3000
- app.listen(3000, () => console.log ('Server berjalan di httpe://localhost:3000'));
+ app.listen(3000, () => console.log ('Server berjalan di httpn://localhost:3000'));
