@@ -5,7 +5,7 @@ import fs from 'fs'; //Mengimpor modul fs untuk membaca file
 import YAML from 'yaml'; //mengimpor YAML untuk membaca Spesifikasi OPENAPI
 
 //Membaca dan mengubah file OpenAPI (spec.yaml) menjadi object Javascript
-const swaggerDocument = YAML.parse(fs.readFileSync('./openapi/spec.yaml', utf8));
+const swaggerDocument = YAML.parse(fs.readFileSync('./openapi/spec.yaml', 'utf8'));
 
 //Membuat koneksi ke database Mysql
 const db = mysql.createConnection({
