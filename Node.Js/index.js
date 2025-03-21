@@ -48,3 +48,20 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
         user: { id: result.insertId, name, email, age }
     });
  });
+
+ //Endpoint untuk mendapatkan pengguna berdasarkan ID
+ app.get('/users/:id', (req, res) => {
+    const { id } = req.params; // Mengambil ID dari parameter URL
+    db.query('SELECT * FROM user WHERE id = ?', [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        if (result.length === 0) {
+            res.status(404).send('User not found'); //Jika pengguna tidak ditemukan, kirim respons 404
+            return;
+        }
+        res,json(results[0]); //Mengirim data pengguna dalam format JSON
+    });
+ });
