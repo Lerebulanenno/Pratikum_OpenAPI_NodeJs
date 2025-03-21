@@ -98,3 +98,36 @@ paths:
           description: Server Gagal
         '403': 
           description: Tidak diizinkan 
+    put: 
+      description: 'Endpoint untuk mengubah data user berdasarkan ID'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: 
+            type: integer
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email: 
+                  type: string
+                age: 
+                  type: integer
+      responses: 
+        '200':
+          description: Berhasil
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/user' 
+        '400':
+          description: Data yang dikirim tidak valid
+        '500': 
+          description: Server Gagal
+
