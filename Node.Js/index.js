@@ -62,6 +62,6 @@ db.query('INSERT INTO user (name, email, age) VALUES (?, ?, ?)', [name, email, a
             res.status(404).send('User not found'); //Jika pengguna tidak ditemukan, kirim respons 404
             return;
         }
-        res,json(results[0]); //Mengirim data pengguna dalam format JSON
+        res,json({message: "User updated sucessfully"});
     });
  });
