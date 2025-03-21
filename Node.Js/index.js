@@ -17,3 +17,6 @@ const db = mysql.createConnection({
 
 // inisialisasi aplikasi express
 const app = express();
+
+//Middleware untuk memungkinkan server membaca dan memproses data JSON dalam request body
+app.use(express.json());
