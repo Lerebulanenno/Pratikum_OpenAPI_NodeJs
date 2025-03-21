@@ -23,3 +23,15 @@ app.use(express.json());
 
 //Endpoint untuk menampilkan dokumentasi Swagger di '/docs'
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+//Endpoint untuk mendapatkan semua pengguna dari database
+app.get('/users', (reg, res) => {
+    db.query('SELECT * FROM user', (err, result) => {
+        if (err) {
+            console.error(err); //Menampilkan error di console
+            res.status(500).send('Internal Server Error'); // Jika ada kesalahan, kirim respons error 500
+            return;
+        }
+        res.json(results); //Mengirim data pengguna dalam format JSON
+    });
+});
